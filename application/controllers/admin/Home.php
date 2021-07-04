@@ -8,6 +8,10 @@ class Home extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Penduduk_model');
+
+        if ($this->session->userdata('id') == null or $this->session->userdata('is_admin') == false) {
+            redirect('login?redirect=admin/home', 'refresh');
+        }
     }
     
 
