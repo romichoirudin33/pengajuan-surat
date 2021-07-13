@@ -8,14 +8,13 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('User_model');
-
-        if ($this->session->userdata('id') != null) {
-            redirect('admin/home', 'refresh');
-        }
     }
 
     public function index()
     {
+        if ($this->session->userdata('id')) {
+            redirect('admin/home', 'refresh');
+        }
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('username', 'Username', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');

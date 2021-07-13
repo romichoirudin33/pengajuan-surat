@@ -1,5 +1,14 @@
 <div
-	class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+	class="
+		d-flex
+		justify-content-between
+		flex-wrap flex-md-nowrap
+		align-items-center
+		pt-3
+		pb-2
+		mb-3
+		border-bottom
+	"
 >
 	<h1 class="h2">Penduduk</h1>
 	<div class="btn-toolbar mb-2 mb-md-0">
@@ -27,7 +36,47 @@
 </div>
 <?php endif; ?>
 
-<div class="card">
+<div class="card mb-2">
+	<div class="card-body">
+		<h5>Filter berdasarkan tanggal lahir</h5>
+		<form action="" method="GET" class="mb-0">
+			<div class="row">
+				<div class="col-5">
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Tgl Mulai</label>
+						<div class="col-sm-9">
+							<input
+								type="date"
+								class="form-control"
+								name="start"
+								value="<?= $this->input->get('start') ?>"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="col-5">
+					<div class="form-group row">
+						<label class="col-sm-3 col-form-label">Tgl akhir</label>
+						<div class="col-sm-9">
+							<input
+								type="date"
+								class="form-control"
+								name="end"
+								value="<?= $this->input->get('end') ?>"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="col-2">
+					<input type="submit" class="btn btn-outline-primary" value="Cari" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<?php if ($data) { ?>
+	<div class="card">
 	<div class="card-body">
 		<table class="table table-bordered table-sm">
 			<thead>
@@ -44,17 +93,22 @@
 				<?php $no=1; ?>
 				<?php foreach ($data as $key) { ?>
 				<tr class="text-center">
-				<td width="15%">
+					<td width="15%">
 						<img
 							class="img-fluid"
 							src="<?= base_url('assets/photo_penduduk/'.$key->photo) ?>"
 						/>
 					</td>
 					<td class="text-left">
-						<?= $key->nama_lengkap ?> <br>
-						<small><b><?= $key->nik ?></b></small>
+						<?= $key->nama_lengkap ?> <br />
+						<small
+							><b><?= $key->nik ?></b></small
+						>
 					</td>
-					<td class="text-left"><?= $key->tempat_lahir ?>, <?= date('d-m-Y', strtotime($key->tanggal_lahir)) ?></td>
+					<td class="text-left">
+						<?= $key->tempat_lahir ?>,
+						<?= date('d-m-Y', strtotime($key->tanggal_lahir)) ?>
+					</td>
 					<td class="text-left"><?= $key->jenis_kelamin ?></td>
 					<td class="text-left"><?= $key->alamat ?></td>
 					<td>
@@ -78,3 +132,10 @@
 		</table>
 	</div>
 </div>
+	<?php } else { ?>
+		<div class="alert alert-primary" role="alert">
+  <?= $msg ?>
+</div>
+<?php } ?>
+
+

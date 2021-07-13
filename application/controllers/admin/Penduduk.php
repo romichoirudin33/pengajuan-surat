@@ -17,7 +17,21 @@ class Penduduk extends CI_Controller
     public function index()
     {
         $data['content'] = 'admin/penduduk/index';
-        $data['data'] = $this->Penduduk_model->all();
+        // $data['data'] = $this->Penduduk_model->all();
+        $data['data'] = [];
+        $data['msg'] = "Data kosong silahkan lakukan filter berdasarkan tanggal lahir !";
+        $start = $this->input->get('start');
+        $end = $this->input->get('end');
+        if ($start && $end) {
+            $getPenduduk = $this->Penduduk_model->getRangeDate($start, $end);
+            if ($getPenduduk) {
+                $data['data'] = $getPenduduk;
+            } else {
+                $data['msg'] = "Data tidak ditemukan untuk pencarian tanggal ini! Silahkan lakukan filter berdasarkan tanggal lahir lainnya !";
+            }
+        }
+        // Buat filter penduduk untuk limit get data from db
+
         $this->load->view('v_admin', $data);
     }
 

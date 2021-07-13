@@ -181,6 +181,12 @@
 							Download <i class="fas fa-download"></i>
 						</a>
 						<?php } ?>
+						<a
+							href="<?= site_url('home/ajukan_surat') ?>"
+							class="btn btn-outline-success btn-sm"
+						>
+							Ajukan Surat Lagi ? <i class="fas fa-redo"></i>
+						</a>
 					</div>
 				</div>
 			</div>
