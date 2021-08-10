@@ -23,7 +23,7 @@
 <div class="card">
 	<div class="card-body">
 		<form
-			action="<?= site_url('admin/penduduk/edit/'.$data->id) ?>"
+			action="<?= site_url('admin/penduduk/edit/'.$data->nik) ?>"
 			method="post"
 			enctype="multipart/form-data"
 		>

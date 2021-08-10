@@ -32,9 +32,16 @@ class Pengajuan_surat_model extends MY_Model
 
     public function cekMasihProses($nik, $status = 'baru')
     {
-        $this->db->where('nik', $nik);
+        $this->db->where('penduduk_nik', $nik);
         $this->db->like('status_proses', $status);
         return $this->db->get($this->table)->result();
+    }
+
+    public function countWhereDate($bulan, $tahun)
+    {
+        $this->db->where('MONTH(created_at)', $bulan);
+        $this->db->where('YEAR(created_at)', $tahun);
+        return $this->db->count_all_results($this->table);
     }
 }
 

@@ -38,7 +38,7 @@
 		>
 			<div class="row">
 				<div class="col-6">
-					<?php $penduduk = $this->Penduduk_model->getNik($data->nik); ?>
+					<?php $penduduk = $this->Penduduk_model->getNik($data->penduduk_nik); ?>
 					<h3><b>Detail Pemohon</b></h3>
 					<br />
 					<table class="table table-sm text-sm">
@@ -61,9 +61,9 @@
 							<td>
 								:
 								<?= $penduduk->tempat_lahir . ', '. date(
-										'd-m-Y',
-										strtotime($penduduk->tanggal_lahir)
-								) ?>
+    'd-m-Y',
+    strtotime($penduduk->tanggal_lahir)
+) ?>
 							</td>
 						</tr>
 						<tr>
@@ -152,8 +152,11 @@
 				</div>
 				<div class="col-6">
           <p>
-            Warga <b><?= $penduduk->nama_lengkap ?></b> dengan nik <b><?= $penduduk->nik ?></b> ini telah melakukan pengajuan <b><?= $data->pengajuan_surat ?> </b>, mohon aparat desa segera memproses pengajuan surat ini !
+            Warga <b><?= $penduduk->nama_lengkap ?></b> dengan nik <b><?= $penduduk->nik ?></b> ini telah melakukan pengajuan <b><?= $this->Surat_model->getId($data->surat_id)->jenis_surat;  ?> </b>, mohon aparat desa segera memproses pengajuan surat ini !
           </p>
+					<p class="text-muted">
+						<?= $data->detail_surat ?>
+					</p>
 					<div class="form-group">
 						<label for="file_surat">File surat</label>
 						<input type="file" class="form-control" name="file_surat" />

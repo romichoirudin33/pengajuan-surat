@@ -113,13 +113,13 @@
 					<td class="text-left"><?= $key->alamat ?></td>
 					<td>
 						<a
-							href="<?= site_url('admin/penduduk/edit/'.$key->id) ?>"
+							href="<?= site_url('admin/penduduk/edit/'.$key->nik) ?>"
 							class="btn btn-primary btn-sm"
 						>
 							<i class="fas fa-edit"></i>
 						</a>
 						<a
-							href="<?= site_url('admin/penduduk/destroy/'.$key->id) ?>"
+							href="<?= site_url('admin/penduduk/destroy/'.$key->nik) ?>"
 							class="btn btn-danger btn-sm"
 							onclick="return confirm('Anda yakin hapus data ini ?')"
 						>

@@ -14,7 +14,7 @@
 </div>
 <div class="row">
 	<div class="col">
-		<center>Status Kawin</center>
+		<center>Pengajuan surat 3 bulan terakhir </center>
 		<canvas
 			class="my-4 w-100"
 			id="statusKawinChart"
@@ -23,7 +23,7 @@
 		></canvas>
 	</div>
 	<div class="col">
-		<center>Jenis Kelamin</center>
+		<center>Presentase baru dan selesai pengajuan surat</center>
 		<canvas
 			class="my-4 w-100"
 			id="statusJenisKelamin"
@@ -32,7 +32,7 @@
 		></canvas>
 	</div>
 	<div class="col">
-		<center>Agama</center>
+		<center>Seluruh status proses pengajuan</center>
 		<canvas
 			class="my-4 w-100"
 			id="agamaChart"
@@ -56,11 +56,11 @@
 		var myChart = new Chart(statusKawinChart, {
 			type: "line",
 			data: {
-				labels: ["Belum Kawin", "Kawin", "Cerai Hidup", "Cerai Mati"],
+				labels: ["2 bln kemarin", "1 bln kemarin", "bln ini"],
 				datasets: [
 					{
 						data: [
-							<?= $belumKawin .','. $kawin .','. $ceraiHidup .','. $ceraiMati ?>
+							<?= $twobln .','. $onebln .','. $bln ?>
 						],
 						lineTension: 0,
 						backgroundColor: "transparent",
@@ -92,10 +92,10 @@
 		var myChart = new Chart(statusKawinChart, {
 			type: "pie",
 			data: {
-				labels: ["Laki-laki", "Perempuan"],
+				labels: ["Baru", "Selesai"],
 				datasets: [
 					{
-						data: [<?= $lakiLaki .','. $perempuan ?>],
+						data: [<?= $presentase_baru .','. $presentase_selesai ?>],
 						backgroundColor: ["rgb(52, 152, 219)", "rgb(231, 76, 60)"],
 						hoverOffset: 4,
 					},
@@ -109,15 +109,15 @@
 		var myChart = new Chart(agamaChart, {
 			type: "bar",
 			data: {
-				labels: ["Islam", "Hindu", "Kristen", "Katholik", "Budha"],
+				labels: ["Baru", "Dikonfirmasi", "Ditolak", "Diproses", "Selesai"],
 				datasets: [
 					{
 						data: [
-							<?= $islam ?>,
-							<?= $hindu ?>,
-							<?= $kristen ?>,
-							<?= $katholik ?>,
-							<?= $budha ?>,
+							<?= $baru ?>,
+							<?= $dikonfirmasi ?>,
+							<?= $ditolak ?>,
+							<?= $diproses ?>,
+							<?= $selesai ?>,
 						],
 						backgroundColor: [
 							"rgb(231, 76, 60)",
@@ -136,7 +136,7 @@
 					yAxes: [
 						{
 							ticks: {
-								beginAtZero: false,
+								beginAtZero: true,
 							},
 						},
 					],

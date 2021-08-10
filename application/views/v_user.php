@@ -190,5 +190,23 @@
 		<script src="<?= base_url('assets/plugins/jquery.min.js'); ?>"></script>
 		<script src="<?= base_url('assets/plugins/bootstrap/js/popper.min.js'); ?>"></script>
 		<script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.min.js'); ?>"></script>
+		<script>
+			$(document).ready(function () {
+				$("#surat_id").on("change", function () {
+					if (this.value != "") {
+						$("#form-group-detail-surat").show();
+						var selectedText = $(this).find("option:selected").text();
+						var placeholder =
+							"Jelaskan secara singkat detail " +
+							selectedText +
+							" yang anda ajukan";
+						$("#detail_surat").attr("placeholder", placeholder);
+					} else {
+						$("#form-group-detail-surat").hide();
+					}
+					// alert();
+				});
+			});
+		</script>
 	</body>
 </html>

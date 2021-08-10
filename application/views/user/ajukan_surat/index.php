@@ -39,7 +39,7 @@
 						>
 							<div class="d-flex w-100 justify-content-between">
 								<strong class="text-dark" style="font-size: large"
-									><?= $i->pengajuan_surat ?></strong
+									><?= $this->Surat_model->getId($i->surat_id)->jenis_surat;  ?></strong
 								>
 							</div>
 							<small class="text-muted">
@@ -47,7 +47,7 @@
 								<?= date('d-m-Y', strtotime($i->created_at)) ?> </small
 							><br />
 							<small class="mb-1"
-								>di ajukan oleh <b><?= $i->nik ?></b>.</small
+								>di ajukan oleh <b><?= $i->penduduk_nik ?></b>.</small
 							>
 						</a>
 						<?php } ?>
@@ -93,18 +93,39 @@
 					<div class="form-group">
 						<label>Pengajuan Surat</label>
 						<select
-							name="pengajuan_surat"
+							name="surat_id"
+							id="surat_id"
 							class="form-control shadow-none rounded-0"
 						>
-							<option value="<?= set_value('pengajuan_surat') ?>">
-								<?= set_value('pengajuan_surat') ?>
-							</option>
+							<option value="">Pilih</option>
 							<?php foreach ($surat as $i) { ?>
-							<option value="<?= $i->jenis_surat ?>">
-								<?= $i->jenis_surat ?>
-							</option>
+							<option value="<?= $i->id ?>"><?= $i->jenis_surat ?></option>
 							<?php } ?>
 						</select>
+					</div>
+					<div
+						class="form-group"
+						id="form-group-detail-surat"
+						style="display: none"
+					>
+						<label id="title-detail-surat">
+							Detail Surat
+							<button
+								type="button"
+								class="btn"
+								data-toggle="modal"
+								data-target="#detailSuratModal"
+							>
+								<span class="fas fa-info-circle"></span>
+							</button>
+						</label>
+						<textarea
+							name="detail_surat"
+							id="detail_surat"
+							rows="3"
+							class="form-control shadow-none rounded-0"
+							autocomplete="off"
+						></textarea>
 					</div>
 					<h5 class="mt-5"><b>Kontak</b></h5>
 					<hr />
@@ -139,6 +160,51 @@
 						</button>
 					</div>
 				</form>
+				<div
+					class="modal fade"
+					id="detailSuratModal"
+					tabindex="-1"
+					aria-labelledby="detailSuratModalLabel"
+					aria-hidden="true"
+				>
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="detailSuratModalLabel">
+									Detail Surat
+								</h5>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="modal"
+									aria-label="Close"
+								>
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p>
+									Detail surat dapat anda ceritakan secara singkat Surat yang
+									anda ajukan.
+								</p>
+								<p>
+									Misal surat keterangan usaha, Usaha jual atau usaha lainya.
+									Ataupun anda dapat menjelaskan secara rinci kebutuhan apa yang
+									sedang anda alami sehingga membutuhkan surat ini
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button
+									type="button"
+									class="btn btn-secondary"
+									data-dismiss="modal"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

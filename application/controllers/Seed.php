@@ -163,20 +163,24 @@ class Seed extends CI_Controller
     {
         $cek = $this->Pengajuan_surat_model->all();
         if (count($cek) == 0) {
-            for ($i=1; $i <= 10; $i++) {
-                $surat = $this->Surat_model->random()->jenis_surat ?? 'Surat';
+            $rows = 100;
+            for ($i=1; $i <= $rows; $i++) {
+                $surat = $this->Surat_model->random()->id ?? 10;
                 $nik = $this->Penduduk_model->random()->nik ?? '123123123';
-                $status_proses = ['baru','dikonfirmasi','ditolak','diproses','berhasil'];
+                $status_proses = ['baru','dikonfirmasi','ditolak','diproses','selesai'];
+                $created = date('Y-m-d H:i:s', strtotime('-'.mt_rand(0, 120).' days'));
                 $data = [
-                    'nik' => $nik,
-                    'pengajuan_surat' => $surat,
+                    'penduduk_nik' => $nik,
+                    'surat_id' => $surat,
                     'status_proses' =>$status_proses[array_rand($status_proses, 1)],
                     'email' => 'mail@mail.com',
-                    'no_hp' => '6281907123123'
+                    'no_hp' => '62819842847',
+                    'created_at' => $created
                 ];
                 $this->Pengajuan_surat_model->create($data);
-                echo 'Seeder Pengajuan Surat finished <br>';
             }
+            echo 'Seeder Pengajuan Surat finished <br>';
+            echo "Total $rows <br>";
         }
     }
 }

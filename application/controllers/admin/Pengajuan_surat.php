@@ -9,6 +9,7 @@ class Pengajuan_surat extends CI_Controller
         parent::__construct();
         $this->load->model('Pengajuan_surat_model');
         $this->load->model('Penduduk_model');
+        $this->load->model('Surat_model');
         
         if ($this->session->userdata('id') == null or $this->session->userdata('is_admin') == false) {
             redirect('login?redirect=admin/pengajuan_surat', 'refresh');

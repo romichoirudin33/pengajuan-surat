@@ -23,15 +23,16 @@ class Home extends CI_Controller
     {
         if ($this->input->post('submit')) {
             $this->form_validation->set_rules('nik', 'NIK', 'required');
-            $this->form_validation->set_rules('pengajuan_surat', 'Pengajuan Surat', 'required');
+            $this->form_validation->set_rules('surat_id', 'Pengajuan Surat', 'required');
             $this->form_validation->set_rules('no_hp', 'No Telp/HP', 'required');
             if ($this->form_validation->run() == true) {
                 $cek = $this->Penduduk_model->getNik($this->input->post('nik'));
                 $masihProses = $this->Pengajuan_surat_model->cekMasihProses($this->input->post('nik'), 'baru');
                 if (!empty($cek) and empty($masihProses)) {
                     $object = [
-                      'nik' => $this->input->post('nik'),
-                      'pengajuan_surat' => $this->input->post('pengajuan_surat'),
+                      'penduduk_nik' => $this->input->post('nik'),
+                      'surat_id' => $this->input->post('surat_id'),
+                      'detail_surat' => $this->input->post('detail_surat'),
                       'email' => $this->input->post('email'),
                       'no_hp' => $this->input->post('no_hp'),
                     ];

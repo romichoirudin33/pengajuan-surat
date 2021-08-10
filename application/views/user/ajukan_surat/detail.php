@@ -39,7 +39,7 @@
 						>
 							<div class="d-flex w-100 justify-content-between">
 								<strong class="text-dark" style="font-size: large"
-									><?= $i->pengajuan_surat ?></strong
+									><?= $this->Surat_model->getId($i->surat_id)->jenis_surat   ?></strong
 								>
 							</div>
 							<small class="text-muted">
@@ -47,7 +47,7 @@
 								<?= date('d-m-Y', strtotime($i->created_at)) ?> </small
 							><br />
 							<small class="mb-1"
-								>di ajukan oleh <b><?= $i->nik ?></b>.</small
+								>di ajukan oleh <b><?= $i->penduduk_nik ?></b>.</small
 							>
 						</a>
 						<?php } ?>
@@ -57,7 +57,7 @@
 			<div class="col-9 bg-light shadow">
 				<div class="row p-4">
 					<div class="col-6">
-						<?php $penduduk = $this->Penduduk_model->getNik($data->nik); ?>
+						<?php $penduduk = $this->Penduduk_model->getNik($data->penduduk_nik); ?>
 						<h3><b>Detail Pemohon</b></h3>
 						<br />
 						<table class="table table-sm text-sm">
@@ -144,7 +144,7 @@
 					</div>
 					<div class="col-6">
 						<p>
-							Pengajuan <b><?= $data->pengajuan_surat ?> </b> <br />
+							Pengajuan <b><?= $this->Surat_model->getId($data->surat_id)->jenis_surat  ?> </b> <br />
 							<small class="text-muted"
 								><i class="fas fa-clock"></i>
 								<?= date('d-m-Y', strtotime($data->created_at)) ?></small

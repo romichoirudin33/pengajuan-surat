@@ -39,7 +39,7 @@
 						>
 							<div class="d-flex w-100 justify-content-between">
 								<strong class="text-dark" style="font-size: large"
-									><?= $i->pengajuan_surat ?></strong
+									><?= $this->Surat_model->getId($i->surat_id)->jenis_surat;  ?></strong
 								>
 							</div>
 							<small class="text-muted">
@@ -47,7 +47,7 @@
 								<?= date('d-m-Y', strtotime($i->created_at)) ?> </small
 							><br />
 							<small class="mb-1"
-								>di ajukan oleh <b><?= $i->nik ?></b>.</small
+								>di ajukan oleh <b><?= $i->penduduk_nik ?></b>.</small
 							>
 						</a>
 						<?php } ?>
@@ -74,7 +74,7 @@
             <?php foreach ($data as $i) { ?>
               <tr>
                 <td>
-                  <a href="<?= site_url('home/ajukan_surat?id='.$i->id) ?> "><?= $i->pengajuan_surat ?></a>
+                  <a href="<?= site_url('home/ajukan_surat?id='.$i->id) ?> "><?= $this->Surat_model->getId($i->surat_id)->jenis_surat;  ?></a>
                 </td>
                 <td class="text-center">
                 <?php if ($i->file != null) { ?>

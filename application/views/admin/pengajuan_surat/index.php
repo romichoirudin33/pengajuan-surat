@@ -62,14 +62,14 @@
 				<?php $no=1; ?>
 				<?php foreach ($data as $key) { ?>
 				<?php
-        $penduduk = $this->Penduduk_model->getNik($key->nik); ?>
+        $penduduk = $this->Penduduk_model->getNik($key->penduduk_nik); ?>
 				<tr class="text-center">
 					<td class="text-left">
 						<?= $penduduk->nik.' <br />
 						'.$penduduk->nama_lengkap ?>
 					</td>
 					<td class="text-left">
-						<strong><?= $key->pengajuan_surat ?> </strong><br />
+						<strong><?= $this->Surat_model->getId($key->surat_id)->jenis_surat;  ?> </strong><br />
 						<a href=""><?= $key->file ?></a> <br />
 						<label class="text-muted text-sm">
 						<i class="fas fa-clock"></i>

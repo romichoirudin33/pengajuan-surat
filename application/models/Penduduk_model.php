@@ -5,6 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Penduduk_model extends MY_Model
 {
     public $table = 'penduduk';
+    public $primaryKey = 'nik';
 
     public function getNik($nik)
     {
